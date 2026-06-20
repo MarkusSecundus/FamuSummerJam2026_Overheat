@@ -69,7 +69,7 @@ namespace MarkusSecundus.Utils.Procgen.Chunking
                             {
                                 _chunks.Remove(idx);
                             }
-                            else if(Time.timeAsDouble > (chunk.LastSeenTimestamp + _chunkTimeToLive_seconds))
+                            else if(UnityEngine.Time.timeAsDouble > (chunk.LastSeenTimestamp + _chunkTimeToLive_seconds))
                             {
                                 Destroy(chunk.Chunk);
                                 _chunks.Remove(idx);
@@ -82,7 +82,7 @@ namespace MarkusSecundus.Utils.Procgen.Chunking
 
         struct ChunkInfo
         {
-            public ChunkInfo(GameObject chunk) => (Chunk, LastSeenTimestamp) = (chunk, Time.timeAsDouble);
+            public ChunkInfo(GameObject chunk) => (Chunk, LastSeenTimestamp) = (chunk, UnityEngine.Time.timeAsDouble);
 
             public GameObject Chunk;
             public double LastSeenTimestamp;

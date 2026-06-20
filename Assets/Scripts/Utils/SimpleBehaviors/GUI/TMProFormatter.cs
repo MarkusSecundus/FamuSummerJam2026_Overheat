@@ -13,10 +13,16 @@ namespace MarkusSecundus.Utils.Behaviors.GUI
         private void Awake()
         {
             _text = GetComponent<TMP_Text>();
+            if (string.IsNullOrWhiteSpace(Format))
+                Format = _text.text;
         }
 
-        public void SetTextWithIntArgument(int arg) => _text.text = string.Format(Format, arg);
-        public void SetTextWithStringArgument(string arg) => _text.text = string.Format(Format, arg);
+        public void SetText(params object[] args) => _text.text = string.Format(Format, args);
 
-    }
+        public void SetTextWithIntArgument(int arg) => SetText(arg);
+
+		public void SetTextWithFloatArgument(float arg) => SetText(arg);
+		public void SetTextWithStringArgument(string arg) => SetText(arg);
+
+	}
 }

@@ -7,6 +7,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 
 namespace MarkusSecundus.Utils.Behaviors.Cosmetics
@@ -16,6 +17,8 @@ namespace MarkusSecundus.Utils.Behaviors.Cosmetics
     /// </summary>
     public class VisualEffectsHelper : MonoBehaviour
     {
+        [SerializeField] Graphic[] AffectedGraphics;
+
         /// <summary>
         /// Renderers to be affected by the effects
         /// </summary>
@@ -24,6 +27,7 @@ namespace MarkusSecundus.Utils.Behaviors.Cosmetics
         /// Parameters for the blinking effect
         /// </summary>
         [SerializeField] BlinkingArgs Blinking = BlinkingArgs.Default;
+
         /// <summary>
         /// Parameters for the blinking effect
         /// </summary>
@@ -125,6 +129,25 @@ namespace MarkusSecundus.Utils.Behaviors.Cosmetics
         {
             var particles = GetComponent<ParticleSystem>();
             particles.Emit(count);
+        }
+
+        [System.Serializable] struct ColorLerpInfo
+        {
+            [SerializeField] public Color Color0;
+            [SerializeField] public Color Color1;
+        }
+        [SerializeField] ColorLerpInfo ColorLerp;
+
+        public void LerpColor(float value01)
+        {
+            var newColor = Color.Lerp(ColorLerp.Color0, ColorLerp.Color1, value01);
+            foreach(var graphics in AffectedGraphics)
+                graphics.color = newColor;
+            foreach(var rend in AffectedRenderers)
+            {
+                foreach (var mat in rend.materials)
+                    mat.color = newColor;
+            }
         }
     }
 }

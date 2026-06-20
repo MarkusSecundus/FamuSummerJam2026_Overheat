@@ -21,16 +21,16 @@ namespace MarkusSecundus.Utils.Input
 
         private void Update()
         {
-            _value += _movementAxis.Value * _movementSpeed * Time.deltaTime;
+            _value += _movementAxis.Value * _movementSpeed * UnityEngine.Time.deltaTime;
 
             var pushback = _pushback.Evaluate(_value);
             if (_toEqualizeAgainst)
             {
                 var equalizationCoefficient = _toEqualizeAgainst.Value - _value;
                 var equalization = _equalizationIntensity.Evaluate(equalizationCoefficient);
-                _value += equalization * Time.deltaTime;
+                _value += equalization * UnityEngine.Time.deltaTime;
             }
-            _value += pushback * -Mathf.Sign(_value) * Time.deltaTime;
+            _value += pushback * -Mathf.Sign(_value) * UnityEngine.Time.deltaTime;
 
 
             _value = Mathf.Clamp(_value, -1f, 1f);
