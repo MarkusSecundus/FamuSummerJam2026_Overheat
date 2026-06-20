@@ -123,5 +123,8 @@ namespace MarkusSecundus.Utils.Extensions
             var shift = pointNewWorldspace - pointWorldspace;
             self.position -= shift;
         }
+
+        // TODO: put into a more appropriate static class
+        public static Vector2 GetSize(this Texture2D self) => new Vector2(self.width, self.height);
     }
 }
