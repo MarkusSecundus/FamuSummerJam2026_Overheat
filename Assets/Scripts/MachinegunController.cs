@@ -96,6 +96,12 @@ public class MachinegunController : MonoBehaviour
         var shotSprite = GameObject.Instantiate(ShotParticles.ShootSprite, particlePoint, Quaternion.identity, this.transform);
         shotSprite.SetActive(true);
 
+        var zombie = hitInfo.collider.GetComponentInParent<ZombieController>();
+        if (zombie)
+        {
+            zombie.DoDamage(1);
+        }
+
         CurrentWaterTemeperature = (CurrentWaterTemeperature + WaterTemperatureIncreasePerShot).Clamp01();
         --CurrentAmmoCount;
         UpdateAmmoCountUI();
