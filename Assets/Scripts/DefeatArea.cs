@@ -21,6 +21,7 @@ public class DefeatArea : MonoBehaviour
 		if (!zombie) return;
 
 		HP -= zombie.Damage;
+		zombie.DoDamage(zombie.HP); // kill the zombie
 		OnDamaged.Invoke(HP);
 		if(HP <= 0)
 		{
