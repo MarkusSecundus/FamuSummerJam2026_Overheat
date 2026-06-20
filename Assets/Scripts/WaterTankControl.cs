@@ -1,7 +1,7 @@
 using MarkusSecundus.Utils.Primitives;
 using UnityEngine;
 
-public class WaterTankController : MonoBehaviour
+public class WaterTankControl : MonoBehaviour
 {
 	[SerializeField] Interval<float> YScaleInterval;
 	[SerializeField] Transform WaterVisualizer;
@@ -13,6 +13,6 @@ public class WaterTankController : MonoBehaviour
 		newValue = newValue.Clamp01();
 		Value = newValue;
 		float newScale = YScaleInterval.Lerp(newValue);
-		WaterVisualizer.localScale = WaterVisualizer.localScale.With(y: newScale);
+		WaterVisualizer.localScale = WaterVisualizer.localScale.With(y: newScale); 
 	}
 }

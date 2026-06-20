@@ -1,4 +1,5 @@
 using MarkusSecundus.Utils.Extensions;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 
 namespace MarkusSecundus.Utils.Primitives
@@ -32,5 +33,8 @@ namespace MarkusSecundus.Utils.Primitives
             var (min, max) = (self.LocalToGlobal(self.rect.min), self.LocalToGlobal(self.rect.max));
             return RectFromPoints(min, max);
         }
+
+        public static Rect GetScreenRect(this Rect self, Camera cam)
+            => RectFromPoints(cam.WorldToScreenPoint(self.min), cam.WorldToScreenPoint(self.max));
     }
 }

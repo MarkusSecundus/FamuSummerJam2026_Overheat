@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
@@ -12,6 +13,17 @@ namespace MarkusSecundus.Utils.Primitives
         public static Interval<Vector2Int> Make(Vector2Int a, Vector2Int b) => new Interval<Vector2Int>(a.Min(b), a.Max(b));
 
         public static float Clamp(this float f, Interval<float> i) => Mathf.Clamp(f, i.Min, i.Max);
+        public static Vector2 Clamp(this Vector2 v, Interval<Vector2> i) => new Vector2(v.x.Clamp(i.X()), v.y.Clamp(i.Y()));
+        public static Vector3 Clamp(this Vector3 v, Interval<Vector3> i) => new Vector3(v.x.Clamp(i.X()), v.y.Clamp(i.Y()), v.z.Clamp(i.Z()));
+
+        public static Interval<Vector2> AsInterval(this Rect rect) => new Interval<Vector2>(rect.min, rect.max);
+
+        public static Interval<float> X(this Interval<Vector2> self) => new Interval<float>(self.Min.x, self.Max.x);
+        public static Interval<float> Y(this Interval<Vector2> self) => new Interval<float>(self.Min.y, self.Max.y);
+
+        public static Interval<float> X(this Interval<Vector3> self) => new Interval<float>(self.Min.x, self.Max.x);
+        public static Interval<float> Y(this Interval<Vector3> self) => new Interval<float>(self.Min.y, self.Max.y);
+        public static Interval<float> Z(this Interval<Vector3> self) => new Interval<float>(self.Min.z, self.Max.z);
 
         public static float Normalize(this float f, Interval<float> i) => (f.Clamp(i) - i.Min) / (i.Max - i.Min);
 
@@ -24,6 +36,8 @@ namespace MarkusSecundus.Utils.Primitives
         public static float Average(this Interval<float> self) => (self.Min + self.Max) * 0.5f;
 
         public static float Lerp(this Interval<float> self, float t) => Mathf.Lerp(self.Min, self.Max, t);
+
+        public static Interval<TOut> Transform<TIn, TOut>(this Interval<TIn> self, Func<TIn, TOut> transform) => new Interval<TOut>(transform(self.Min), transform(self.Max));
     }
 
     /// <summary>
@@ -48,6 +62,8 @@ namespace MarkusSecundus.Utils.Primitives
         /// Upper bound of the interval
         /// </summary>
         public T Max;
+
+        public override string ToString() => $"<{Min} ; {Max}>";
     }
 
 }
