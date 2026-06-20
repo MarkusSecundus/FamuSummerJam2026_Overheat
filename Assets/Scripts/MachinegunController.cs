@@ -10,7 +10,7 @@ public class MachinegunController : MonoBehaviour
 {
     [SerializeField] Transform Rotatable;
     [SerializeField] TMProFormatter ammoCountLabel;
-    [SerializeField] Slider waterBoilingProgressBar;
+    [SerializeField] WaterTankController waterBoilingProgressBar;
 
     [SerializeField] int MaxAmmoCount = 100;
     [SerializeField] int CurrentAmmoCount = 50;
@@ -68,7 +68,7 @@ public class MachinegunController : MonoBehaviour
 
     void UpdateWaterTemepratureUI()
 	{
-		waterBoilingProgressBar.value = Mathf.Lerp(waterBoilingProgressBar.value, CurrentWaterTemeperature, Time.deltaTime);
+		waterBoilingProgressBar.SetValue(Mathf.Lerp(waterBoilingProgressBar.Value, CurrentWaterTemeperature, Time.deltaTime));
 	}
 
     void UpdateAmmoCountUI()
