@@ -31,7 +31,7 @@ public class DefeatArea : MonoBehaviour
 		if (zombie.IsZombie)
 		{
 			HP -= zombie.Damage;
-			zombie.DoDamage(zombie.HP); // kill the zombie
+			zombie.MissionSuccess();
 			OnDamaged.Invoke(HP);
 			if (HP <= 0)
 			{
@@ -40,7 +40,7 @@ public class DefeatArea : MonoBehaviour
 		}
 		else
 		{
-			zombie.DoDamage(zombie.HP); // kill the soldier
+			zombie.MissionSuccess();
 
 			var ammoToAdd = zombie.AmmoCounts.Choice(_rand);
 			_ammo.AddAmmo(ammoToAdd);

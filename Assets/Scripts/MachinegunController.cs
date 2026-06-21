@@ -8,6 +8,7 @@ using MarkusSecundus.Utils.Time;
 using System.Data;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
@@ -23,10 +24,15 @@ public class MachinegunController : MonoBehaviour
     [SerializeField] float WaterTemperatureDecreasePerSecond = 0.1f;
     [SerializeField] float CurrentWaterTemeperature = 0f;
     [SerializeField] float WaterTooHotThreshold = 0.9f;
+    [SerializeField] Renderer _gunMesh;
     bool IsWaterTooHot => CurrentWaterTemeperature >= WaterTooHotThreshold;
     [SerializeField] Interval<Vector2> _shootArea;
 
-    void Start()
+    [SerializeField] UnityEvent OnShot;
+    [SerializeField] UnityEvent OnShotOutOfAmmo;
+    [SerializeField] UnityEvent OnShotTooHeated;
+
+	void Start()
     {
         _ammoStatus = FindAnyObjectByType<AmmoStatus>();
         UpdateWaterTemepratureUI();
@@ -93,10 +99,20 @@ public class MachinegunController : MonoBehaviour
     [SerializeField] float _knockbackOut_seconds = 0.1f;
     void DoShoot(in RaycastHit hitInfo)
 	{
-		if (CurrentAmmoCount <= 0) return;
-		if (IsWaterTooHot) return;
 
 		if (!_shootTimestamp.TryConsume(_timeBetweenShots_seconds)) return;
+
+		if (CurrentAmmoCount <= 0)
+        {
+            OnShotOutOfAmmo.Invoke();
+			return;
+		}
+		if (IsWaterTooHot)
+        {
+            OnShotTooHeated.Invoke();
+            _shootTimestamp.Postpone(1.5f);
+            return;
+        }
 
 
 		GetComponentInChildren<VisualEffectsHelper>().EmitParticles(_shootParticlesCount);
@@ -117,6 +133,7 @@ public class MachinegunController : MonoBehaviour
 		AddWaterTemperature(WaterTemperatureIncreasePerShot);
         _ammoStatus.ConsumeAmmo(1);
 
+        OnShot.Invoke();
         //Debug.Log($"{_shootTimestamp.LastTimestamp_seconds}, Shooting!", this);
     }
     public void AddWaterTemperature(float increase)
@@ -138,9 +155,12 @@ public class MachinegunController : MonoBehaviour
         UpdateWaterTemepratureUI();
     }
 
+    [SerializeField] Color hotColor;
+    [SerializeField] AnimationCurve hotCurve;
     void UpdateWaterTemepratureUI()
 	{
 		waterBoilingProgressBar.SetValue(Mathf.Lerp(waterBoilingProgressBar.Value, CurrentWaterTemeperature, Time.deltaTime));
+        _gunMesh.material.color = Color.Lerp(Color.white, hotColor, hotCurve.Evaluate(waterBoilingProgressBar.Value));
 	}
 
 }

@@ -4,6 +4,7 @@ using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ZombieSpawner : MonoBehaviour
 {
@@ -15,12 +16,13 @@ public class ZombieSpawner : MonoBehaviour
 
 	[SerializeField] Transform _spawnParent;
 
+
 	System.Random rand = new();
 
 	Shuffler<ZombieController> _zombieChoice;
 	private void Start()
 	{
-		_zombieChoice = new Shuffler<ZombieController>(rand, ZombiePrefabs, 2);
+		_zombieChoice = new Shuffler<ZombieController>(rand, ZombiePrefabs, 1);
 
 		StartCoroutine(RunSpawnLoop());
 		Camera.main.useOcclusionCulling = false;
