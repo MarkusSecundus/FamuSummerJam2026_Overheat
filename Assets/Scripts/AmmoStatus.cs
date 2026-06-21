@@ -8,6 +8,7 @@ public class AmmoStatus : MonoBehaviour
 {
 	[SerializeField] TMProFormatter AmmoCountDisplay;
 	[SerializeField] TMProFormatter AmmoAddedDisplay;
+	[SerializeField] int MaxAmmoCount = 100;
 
 	[field: SerializeField] public int AmmoCount { get; private set; } = 50;
 
@@ -22,6 +23,7 @@ public class AmmoStatus : MonoBehaviour
 	public void AddAmmo(int AmmountToAdd)
 	{
 		AmmoCount += AmmountToAdd;
+		if (AmmoCount > MaxAmmoCount) AmmoCount = MaxAmmoCount;
 		UpdateAmmoUI();
 
 		AmmoAddedDisplay.SetTextWithIntArgument(AmmountToAdd);
@@ -33,6 +35,7 @@ public class AmmoStatus : MonoBehaviour
 	{
 		AmmoCount -= ammount;
 		if (AmmoCount < 0) AmmoCount = 0;
+		EndStatsContainer.Instance.AmmoUsed += ammount;
 		UpdateAmmoUI();
 	}
 

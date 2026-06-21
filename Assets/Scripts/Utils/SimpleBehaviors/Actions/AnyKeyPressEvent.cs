@@ -1,9 +1,11 @@
+using MarkusSecundus.Utils.Extensions;
 using MarkusSecundus.Utils.Input;
 using MarkusSecundus.Utils.Serialization;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 
 namespace MarkusSecundus.Utils.Behaviors.Actions
 {
@@ -21,7 +23,8 @@ namespace MarkusSecundus.Utils.Behaviors.Actions
             }
             else
             {
-                if (UnityEngine.Input.anyKeyDown) OnAnyKeyDown?.Invoke();
+                if (Keyboard.current.IsNotNil() && Keyboard.current.anyKey.wasPressedThisFrame) OnAnyKeyDown?.Invoke();
+                //if (UnityEngine.Input.anyKeyDown) OnAnyKeyDown?.Invoke();
             }
         }
     }

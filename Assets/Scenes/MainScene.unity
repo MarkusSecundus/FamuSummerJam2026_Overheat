@@ -204,10 +204,9 @@ GameObject:
   m_Component:
   - component: {fileID: 163601433}
   - component: {fileID: 163601435}
-  - component: {fileID: 163601437}
   - component: {fileID: 163601436}
   m_Layer: 5
-  m_Name: RoomTransition
+  m_Name: StartFadeEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -254,74 +253,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UtilAssembly::MarkusSecundus.Utils.Behaviors.Cosmetics.FadeEffect
   _comment: 
-  duration_seconds: 0.4
+  duration_seconds: 2
   alphaLow: 0
   alphaHigh: 1
   _onStart: 2
-  ease: 1
+  ease: 7
   onComplete:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &163601437
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 163601432}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5c5ae815f718d24bbca16c50d3a1d7f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UtilAssembly::MarkusSecundus.Utils.Behaviors.Cosmetics.FadeEffect
-  _comment: 
-  duration_seconds: 0.4
-  alphaLow: 0
-  alphaHigh: 1
-  _onStart: 0
-  ease: 1
-  onComplete:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 163601436}
-        m_TargetAssemblyTypeName: MarkusSecundus.Utils.Behaviors.Cosmetics.FadeEffect,
-          UtilAssembly
-        m_MethodName: FadeOut
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1003990020}
-        m_TargetAssemblyTypeName: MarkusSecundus.Utils.Behaviors.GameObjects.LifetimeHelper,
-          UtilAssembly
-        m_MethodName: SwitchActiveness
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 171436804737338483}
-        m_TargetAssemblyTypeName: MarkusSecundus.Utils.Behaviors.GameObjects.LifetimeHelper,
-          UtilAssembly
-        m_MethodName: SwitchActiveness
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &169603072
 GameObject:
   m_ObjectHideFlags: 0
@@ -375,6 +314,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AmmoStatus
   AmmoCountDisplay: {fileID: 1328739419}
   AmmoAddedDisplay: {fileID: 881884601}
+  MaxAmmoCount: 100
   <AmmoCount>k__BackingField: 50
 --- !u!1 &239992754
 GameObject:
@@ -745,6 +685,100 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &643731148
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 643731149}
+  - component: {fileID: 643731151}
+  - component: {fileID: 643731150}
+  - component: {fileID: 643731152}
+  m_Layer: 5
+  m_Name: EndFadeEffect
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &643731149
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 643731148}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.3333334, y: 1.3333334, z: 1.3333334}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1056249910}
+  - {fileID: 1816121312}
+  m_Father: {fileID: 1484622987}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0.0017089844, y: 0.0009765625}
+  m_SizeDelta: {x: -200, y: -116.83}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &643731150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 643731148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5c5ae815f718d24bbca16c50d3a1d7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UtilAssembly::MarkusSecundus.Utils.Behaviors.Cosmetics.FadeEffect
+  _comment: 
+  duration_seconds: 2
+  alphaLow: 0
+  alphaHigh: 1
+  _onStart: 0
+  ease: 7
+  onComplete:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 643731152}
+        m_TargetAssemblyTypeName: MarkusSecundus.Utils.Behaviors.Actions.SceneTransitioner,
+          UtilAssembly
+        m_MethodName: TransitionToScene
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: EndScene
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!222 &643731151
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 643731148}
+  m_CullTransparentMesh: 1
+--- !u!114 &643731152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 643731148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23f0953a83e16044f95babd260c6889b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UtilAssembly::MarkusSecundus.Utils.Behaviors.Actions.SceneTransitioner
 --- !u!1 &706415938
 GameObject:
   m_ObjectHideFlags: 0
@@ -1130,17 +1164,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 926587213}
   m_CullTransparentMesh: 1
---- !u!114 &1003990020 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5016092166025448576, guid: 389b02d49308742439f6932dc33d8f32, type: 3}
-  m_PrefabInstance: {fileID: 1437731222}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b504d05487a4934383c3617ba8c7669, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UtilAssembly::MarkusSecundus.Utils.Behaviors.GameObjects.LifetimeHelper
 --- !u!1 &1027027975
 GameObject:
   m_ObjectHideFlags: 0
@@ -1215,6 +1238,81 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1027027975}
+  m_CullTransparentMesh: 1
+--- !u!1 &1056249909
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1056249910}
+  - component: {fileID: 1056249912}
+  - component: {fileID: 1056249911}
+  m_Layer: 5
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1056249910
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1056249909}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 643731149}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -14.295898, y: -13}
+  m_SizeDelta: {x: 572.1675, y: 568.1249}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1056249911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1056249909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1056249912
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1056249909}
   m_CullTransparentMesh: 1
 --- !u!1 &1149486149
 GameObject:
@@ -1558,7 +1656,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1426333483
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1667,7 +1765,7 @@ PrefabInstance:
     - target: {fileID: 3863005037166582046, guid: 389b02d49308742439f6932dc33d8f32, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 163601437}
+      objectReference: {fileID: 0}
     - target: {fileID: 5117137488950451751, guid: 389b02d49308742439f6932dc33d8f32, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 192
@@ -1780,6 +1878,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 163601433}
+  - {fileID: 643731149}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1952,6 +2051,17 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1802337195 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8028379757727609176, guid: 4448704e6567e894e8783f4662bd766a, type: 3}
+  m_PrefabInstance: {fileID: 171436804737338482}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 100d335d2a97f7a4fb9e1ba4cddf40c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ZombieController
 --- !u!1 &1816121310
 GameObject:
   m_ObjectHideFlags: 0
@@ -2074,12 +2184,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1816121310}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -20.71737, y: 1.30747, z: 3.38012}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -740.01, y: -403.64746, z: 3.2645023}
+  m_LocalScale: {x: 0.96579474, y: 0.96579474, z: 0.96579474}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 643731149}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2065713047
 GameObject:
@@ -2156,6 +2266,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2065713047}
   m_CullTransparentMesh: 1
+--- !u!1 &2102780027
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2102780029}
+  - component: {fileID: 2102780028}
+  m_Layer: 0
+  m_Name: StatsContainer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2102780028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2102780027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55deec35e7324ff4994fbd0fca046c8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EndStatsContainer
+  AmmoUsed: 0
+  FriendliesKilled: 0
+  ZombiesKilled: 0
+--- !u!4 &2102780029
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2102780027}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1411.1611, y: -0.00001, z: 11351.962}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2127383464
 GameObject:
   m_ObjectHideFlags: 0
@@ -2310,15 +2467,79 @@ PrefabInstance:
     - target: {fileID: 2753813410035155495, guid: 4448704e6567e894e8783f4662bd766a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 163601437}
+      objectReference: {fileID: 0}
+    - target: {fileID: 2985531388022345575, guid: 4448704e6567e894e8783f4662bd766a, type: 3}
+      propertyPath: HeatRemoval
+      value: 0.08
+      objectReference: {fileID: 0}
     - target: {fileID: 3082180933707728008, guid: 4448704e6567e894e8783f4662bd766a, type: 3}
       propertyPath: m_PlayOnAwake
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3292327857011500855, guid: 4448704e6567e894e8783f4662bd766a, type: 3}
+      propertyPath: HeatRemoval
+      value: 0.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3771775421975181818, guid: 4448704e6567e894e8783f4662bd766a, type: 3}
+      propertyPath: HP
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3771775421975181818, guid: 4448704e6567e894e8783f4662bd766a, type: 3}
+      propertyPath: OnDefeated.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3771775421975181818, guid: 4448704e6567e894e8783f4662bd766a, type: 3}
+      propertyPath: OnDefeated.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3771775421975181818, guid: 4448704e6567e894e8783f4662bd766a, type: 3}
+      propertyPath: OnDefeated.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3771775421975181818, guid: 4448704e6567e894e8783f4662bd766a, type: 3}
       propertyPath: OnDamaged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 239992756}
+    - target: {fileID: 3771775421975181818, guid: 4448704e6567e894e8783f4662bd766a, type: 3}
+      propertyPath: OnDefeated.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 643731150}
+    - target: {fileID: 3771775421975181818, guid: 4448704e6567e894e8783f4662bd766a, type: 3}
+      propertyPath: OnDefeated.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 643731150}
+    - target: {fileID: 3771775421975181818, guid: 4448704e6567e894e8783f4662bd766a, type: 3}
+      propertyPath: OnDefeated.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3771775421975181818, guid: 4448704e6567e894e8783f4662bd766a, type: 3}
+      propertyPath: OnDefeated.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3771775421975181818, guid: 4448704e6567e894e8783f4662bd766a, type: 3}
+      propertyPath: OnDefeated.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: FadeIn
+      objectReference: {fileID: 0}
+    - target: {fileID: 3771775421975181818, guid: 4448704e6567e894e8783f4662bd766a, type: 3}
+      propertyPath: OnDefeated.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: FadeOutAudio
+      objectReference: {fileID: 0}
+    - target: {fileID: 3771775421975181818, guid: 4448704e6567e894e8783f4662bd766a, type: 3}
+      propertyPath: OnDefeated.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MarkusSecundus.Utils.Behaviors.Cosmetics.FadeEffect, UtilAssembly
+      objectReference: {fileID: 0}
+    - target: {fileID: 3771775421975181818, guid: 4448704e6567e894e8783f4662bd766a, type: 3}
+      propertyPath: OnDefeated.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: MarkusSecundus.Utils.Behaviors.Cosmetics.FadeEffect, UtilAssembly
+      objectReference: {fileID: 0}
+    - target: {fileID: 3771775421975181818, guid: 4448704e6567e894e8783f4662bd766a, type: 3}
+      propertyPath: OnDefeated.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3771775421975181818, guid: 4448704e6567e894e8783f4662bd766a, type: 3}
+      propertyPath: OnDefeated.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 3907032847908857644, guid: 4448704e6567e894e8783f4662bd766a, type: 3}
       propertyPath: m_PlayOnAwake
       value: 0
@@ -2331,6 +2552,30 @@ PrefabInstance:
       propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4749407736806153395, guid: 4448704e6567e894e8783f4662bd766a, type: 3}
+      propertyPath: ZombiePrefabs.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4749407736806153395, guid: 4448704e6567e894e8783f4662bd766a, type: 3}
+      propertyPath: 'ZombiePrefabs.Array.data[7]'
+      value: 
+      objectReference: {fileID: 1802337195}
+    - target: {fileID: 4749407736806153395, guid: 4448704e6567e894e8783f4662bd766a, type: 3}
+      propertyPath: TimeBetweenSpawns.Array.size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4749407736806153395, guid: 4448704e6567e894e8783f4662bd766a, type: 3}
+      propertyPath: 'TimeBetweenSpawns.Array.data[8]'
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4749407736806153395, guid: 4448704e6567e894e8783f4662bd766a, type: 3}
+      propertyPath: 'TimeBetweenSpawns.Array.data[9]'
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6927538352477282722, guid: 4448704e6567e894e8783f4662bd766a, type: 3}
+      propertyPath: _ammoStatus
+      value: 
+      objectReference: {fileID: 169603074}
     - target: {fileID: 7166618489591842592, guid: 4448704e6567e894e8783f4662bd766a, type: 3}
       propertyPath: m_Size.x
       value: 16.725365
@@ -2355,6 +2600,14 @@ PrefabInstance:
       propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8028379757727609176, guid: 4448704e6567e894e8783f4662bd766a, type: 3}
+      propertyPath: MovementSpeedRange.Max
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8028379757727609176, guid: 4448704e6567e894e8783f4662bd766a, type: 3}
+      propertyPath: MovementSpeedRange.Min
+      value: 0.15
+      objectReference: {fileID: 0}
     - target: {fileID: 8846504996319318981, guid: 4448704e6567e894e8783f4662bd766a, type: 3}
       propertyPath: m_PlayOnAwake
       value: 0
@@ -2368,17 +2621,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4448704e6567e894e8783f4662bd766a, type: 3}
---- !u!114 &171436804737338483 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7736982961382976707, guid: 4448704e6567e894e8783f4662bd766a, type: 3}
-  m_PrefabInstance: {fileID: 171436804737338482}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b504d05487a4934383c3617ba8c7669, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UtilAssembly::MarkusSecundus.Utils.Behaviors.GameObjects.LifetimeHelper
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -2387,4 +2629,4 @@ SceneRoots:
   - {fileID: 1437731222}
   - {fileID: 483990380}
   - {fileID: 1484622987}
-  - {fileID: 1816121312}
+  - {fileID: 2102780029}

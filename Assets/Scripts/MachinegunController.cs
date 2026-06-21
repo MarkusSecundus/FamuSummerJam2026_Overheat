@@ -17,7 +17,7 @@ public class MachinegunController : MonoBehaviour
     [SerializeField] Transform Rotatable;
     [SerializeField] WaterTankControl waterBoilingProgressBar;
 
-    AmmoStatus _ammoStatus;
+    [SerializeField] AmmoStatus _ammoStatus;
     //[SerializeField] int MaxAmmoCount = 100;
     int CurrentAmmoCount => _ammoStatus.AmmoCount;
     [SerializeField] float WaterTemperatureIncreasePerShot = 0.03f;
@@ -34,7 +34,7 @@ public class MachinegunController : MonoBehaviour
 
 	void Start()
     {
-        _ammoStatus = FindAnyObjectByType<AmmoStatus>();
+        if(!_ammoStatus) _ammoStatus = FindAnyObjectByType<AmmoStatus>();
         UpdateWaterTemepratureUI();
 	}
 

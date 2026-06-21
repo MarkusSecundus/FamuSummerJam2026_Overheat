@@ -73,6 +73,8 @@ public class ZombieController : MonoBehaviour, IRandomizer
 			{
 				Destroy(this.gameObject);
 			});
+			if (IsZombie) ++EndStatsContainer.Instance.ZombiesKilled;
+			else ++EndStatsContainer.Instance.FriendliesKilled;
 		}
 		else
 		{
