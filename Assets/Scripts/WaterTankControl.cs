@@ -5,7 +5,8 @@ public class WaterTankControl : MonoBehaviour
 {
 	[SerializeField] Interval<float> YScaleInterval;
 	[SerializeField] Transform WaterVisualizer;
-
+	[SerializeField] ParticleSystem BubbleParticles;
+	[SerializeField] AnimationCurve BubbleCount;
 	public float Value { get; private set; }
 
 	public void SetValue(float newValue)
@@ -13,6 +14,9 @@ public class WaterTankControl : MonoBehaviour
 		newValue = newValue.Clamp01();
 		Value = newValue;
 		float newScale = YScaleInterval.Lerp(newValue);
-		WaterVisualizer.localScale = WaterVisualizer.localScale.With(y: newScale); 
+		WaterVisualizer.localScale = WaterVisualizer.localScale.With(y: newScale);
+
+		var em = BubbleParticles.emission;
+		em.rateOverTime = BubbleCount.Evaluate(newValue);
 	}
 }

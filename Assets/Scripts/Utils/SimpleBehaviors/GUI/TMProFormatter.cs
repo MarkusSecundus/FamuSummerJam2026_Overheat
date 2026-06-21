@@ -6,13 +6,14 @@ using UnityEngine;
 namespace MarkusSecundus.Utils.Behaviors.GUI
 {
     public class TMProFormatter : MonoBehaviour
-    {
-        [SerializeField] string Format;
+	{
+		[SerializeField] TMP_Text _text;
+		[SerializeField] string Format;
 
-        TMP_Text _text;
         private void Awake()
         {
-            _text = GetComponent<TMP_Text>();
+            if(!_text) 
+                _text = GetComponentInChildren<TMP_Text>();
             if (string.IsNullOrWhiteSpace(Format))
                 Format = _text.text;
         }
