@@ -20,6 +20,7 @@ public class ZombieController : MonoBehaviour, IRandomizer
 	public int HP = 5;
 	public bool IsZombie = true;
 	public List<int> AmmoCounts;
+	public float HeatRemoval = 0f;
 	public bool IsDead => HP <= 0;
 	public void Start()
 	{
