@@ -2,12 +2,13 @@ using MarkusSecundus.Utils.Primitives;
 using MarkusSecundus.Utils.Randomness;
 using NUnit.Framework;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ZombieSpawner : MonoBehaviour
 {
 	[SerializeField] ZombieSpawnPoint[] SpawnPoints;
-	[SerializeField] Interval<float> TimeBetweenSpawns;
+	[SerializeField] List<float> TimeBetweenSpawns;
 	[SerializeField] ZombieController[] ZombiePrefabs;
 	[SerializeField] int MaxZombieCount = 8;
 	[SerializeField] Interval<float> ZombieSpeeds;
@@ -15,8 +16,11 @@ public class ZombieSpawner : MonoBehaviour
 	[SerializeField] Transform _spawnParent;
 
 	System.Random rand = new();
+
+	Shuffler<ZombieController> _zombieChoice;
 	private void Start()
 	{
+		_zombieChoice = new Shuffler<ZombieController>(rand, ZombiePrefabs, 2);
 
 		StartCoroutine(RunSpawnLoop());
 		Camera.main.useOcclusionCulling = false;
@@ -27,7 +31,7 @@ public class ZombieSpawner : MonoBehaviour
 		while (true)
 		{
 			SpawnSomething();
-			float toWait = rand.Next(TimeBetweenSpawns);
+			float toWait = TimeBetweenSpawns.Choice(rand);
 			yield return new WaitForSeconds(toWait);
 		}
 	}
@@ -38,7 +42,7 @@ public class ZombieSpawner : MonoBehaviour
 		{
 			return;
 		}
-		var zombiePrefab = ZombiePrefabs.Choice(rand);
+		var zombiePrefab = _zombieChoice.Next();
 		var spawnPoint = SpawnPoints.Choice(rand);
 
 		var spawned = Instantiate(zombiePrefab, spawnPoint.transform.position, zombiePrefab.transform.rotation, _spawnParent);
