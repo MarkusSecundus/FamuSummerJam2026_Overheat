@@ -11,8 +11,6 @@ public class DefeatArea : MonoBehaviour
 	[SerializeField] UnityEvent<int> OnDamaged;
 	[SerializeField] UnityEvent OnDefeated;
 
-	[SerializeField] List<int> AmmoCounts;
-
 	AmmoStatus _ammo;
 
 	System.Random _rand = new();
@@ -42,7 +40,7 @@ public class DefeatArea : MonoBehaviour
 		{
 			zombie.DoDamage(zombie.HP); // kill the soldier
 
-			var ammoToAdd = AmmoCounts.Choice(_rand);
+			var ammoToAdd = zombie.AmmoCounts.Choice(_rand);
 			_ammo.AddAmmo(ammoToAdd);
 		}
 

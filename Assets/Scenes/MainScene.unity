@@ -1252,6 +1252,17 @@ RectTransform:
   m_AnchoredPosition: {x: -5, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1155330658 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8028379757727609176, guid: 4448704e6567e894e8783f4662bd766a, type: 3}
+  m_PrefabInstance: {fileID: 171436804737338482}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 100d335d2a97f7a4fb9e1ba4cddf40c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ZombieController
 --- !u!1 &1159251554
 GameObject:
   m_ObjectHideFlags: 0
@@ -1575,7 +1586,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -14.2960205, y: -12.999939}
+  m_AnchoredPosition: {x: -14.295898, y: -13}
   m_SizeDelta: {x: 572.1675, y: 568.1249}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1426333484
@@ -2110,6 +2121,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 704874444499276000, guid: 4448704e6567e894e8783f4662bd766a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1053714612585212390, guid: 4448704e6567e894e8783f4662bd766a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.371
@@ -2162,6 +2177,38 @@ PrefabInstance:
       propertyPath: OnDamaged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 239992756}
+    - target: {fileID: 4749407736806153395, guid: 4448704e6567e894e8783f4662bd766a, type: 3}
+      propertyPath: ZombiePrefabs.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4749407736806153395, guid: 4448704e6567e894e8783f4662bd766a, type: 3}
+      propertyPath: 'ZombiePrefabs.Array.data[6]'
+      value: 
+      objectReference: {fileID: 1155330658}
+    - target: {fileID: 4749407736806153395, guid: 4448704e6567e894e8783f4662bd766a, type: 3}
+      propertyPath: 'ZombiePrefabs.Array.data[7]'
+      value: 
+      objectReference: {fileID: 1155330658}
+    - target: {fileID: 4749407736806153395, guid: 4448704e6567e894e8783f4662bd766a, type: 3}
+      propertyPath: TimeBetweenSpawns.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4749407736806153395, guid: 4448704e6567e894e8783f4662bd766a, type: 3}
+      propertyPath: 'TimeBetweenSpawns.Array.data[1]'
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4749407736806153395, guid: 4448704e6567e894e8783f4662bd766a, type: 3}
+      propertyPath: 'TimeBetweenSpawns.Array.data[6]'
+      value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4749407736806153395, guid: 4448704e6567e894e8783f4662bd766a, type: 3}
+      propertyPath: 'TimeBetweenSpawns.Array.data[7]'
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8028379757727609176, guid: 4448704e6567e894e8783f4662bd766a, type: 3}
+      propertyPath: MovementSpeedRange.Max
+      value: 0.35
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -3,8 +3,10 @@ using MarkusSecundus.Utils.Behaviors.Automatization;
 using MarkusSecundus.Utils.Behaviors.Cosmetics;
 using MarkusSecundus.Utils.Primitives;
 using MarkusSecundus.Utils.Randomness;
+using NUnit.Framework;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ZombieController : MonoBehaviour, IRandomizer
@@ -17,6 +19,7 @@ public class ZombieController : MonoBehaviour, IRandomizer
 
 	public int HP = 5;
 	public bool IsZombie = true;
+	public List<int> AmmoCounts;
 	public bool IsDead => HP <= 0;
 	public void Start()
 	{
