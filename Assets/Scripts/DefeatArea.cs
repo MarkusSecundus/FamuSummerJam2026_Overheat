@@ -1,3 +1,6 @@
+using MarkusSecundus.Utils.Randomness;
+using NUnit.Framework;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -8,8 +11,14 @@ public class DefeatArea : MonoBehaviour
 	[SerializeField] UnityEvent<int> OnDamaged;
 	[SerializeField] UnityEvent OnDefeated;
 
+	[SerializeField] List<int> AmmoCounts;
+
+	AmmoStatus _ammo;
+
+	System.Random _rand = new();
 	private void Start()
 	{
+		_ammo = FindAnyObjectByType<AmmoStatus>();
 		OnDamaged.Invoke(HP);
 	}
 
@@ -19,13 +28,23 @@ public class DefeatArea : MonoBehaviour
 
 		var zombie = other.GetComponentInParent<ZombieController>();
 		if (!zombie) return;
-
-		HP -= zombie.Damage;
-		zombie.DoDamage(zombie.HP); // kill the zombie
-		OnDamaged.Invoke(HP);
-		if(HP <= 0)
+		if (zombie.IsZombie)
 		{
-			OnDefeated.Invoke();
+			HP -= zombie.Damage;
+			zombie.DoDamage(zombie.HP); // kill the zombie
+			OnDamaged.Invoke(HP);
+			if (HP <= 0)
+			{
+				OnDefeated.Invoke();
+			}
 		}
+		else
+		{
+			zombie.DoDamage(zombie.HP); // kill the soldier
+
+			var ammoToAdd = AmmoCounts.Choice(_rand);
+			_ammo.AddAmmo(ammoToAdd);
+		}
+
 	}
 }
