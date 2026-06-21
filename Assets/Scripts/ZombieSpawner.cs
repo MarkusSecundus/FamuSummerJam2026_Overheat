@@ -19,6 +19,7 @@ public class ZombieSpawner : MonoBehaviour
 	{
 
 		StartCoroutine(RunSpawnLoop());
+		Camera.main.useOcclusionCulling = false;
 	}
 
 	IEnumerator RunSpawnLoop()
@@ -42,7 +43,7 @@ public class ZombieSpawner : MonoBehaviour
 
 		var spawned = Instantiate(zombiePrefab, spawnPoint.transform.position, zombiePrefab.transform.rotation, _spawnParent);
 		spawned.MovementDirection = spawnPoint.Direction;
-		spawned.MovementSpeed = rand.Next(ZombieSpeeds);
+		spawned.Randomize(rand);
 		spawned.gameObject.SetActive(true);
 
 	}

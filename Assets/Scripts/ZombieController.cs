@@ -1,15 +1,22 @@
 using DG.Tweening;
+using MarkusSecundus.Utils.Behaviors.Automatization;
 using MarkusSecundus.Utils.Behaviors.Cosmetics;
+using MarkusSecundus.Utils.Primitives;
+using MarkusSecundus.Utils.Randomness;
+using System;
 using System.Collections;
 using UnityEngine;
 
-public class ZombieController : MonoBehaviour
+public class ZombieController : MonoBehaviour, IRandomizer
 {
 	public Vector3 MovementDirection = Vector2.right;
 	public float MovementSpeed = 1f;
+
+	[SerializeField] Interval<float> MovementSpeedRange;
 	public int Damage => 1;
 
 	public int HP = 5;
+	public bool IsZombie = true;
 	public bool IsDead => HP <= 0;
 	public void Start()
 	{
@@ -65,4 +72,8 @@ public class ZombieController : MonoBehaviour
 		}
 	}
 
+	public void Randomize(System.Random random)
+	{
+		this.MovementSpeed = random.Next(MovementSpeedRange);
+	}
 }
