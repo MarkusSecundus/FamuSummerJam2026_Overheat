@@ -11,14 +11,14 @@ public class DefeatArea : MonoBehaviour
 	[SerializeField] UnityEvent<int> OnDamaged;
 	[SerializeField] UnityEvent OnDefeated;
 
-	[SerializeField] List<int> AmmoCounts;
-
 	AmmoStatus _ammo;
+	MachinegunController _machinegun;
 
 	System.Random _rand = new();
 	private void Start()
 	{
 		_ammo = FindAnyObjectByType<AmmoStatus>();
+		_machinegun = FindAnyObjectByType<MachinegunController>();
 		OnDamaged.Invoke(HP);
 	}
 
@@ -42,8 +42,9 @@ public class DefeatArea : MonoBehaviour
 		{
 			zombie.DoDamage(zombie.HP); // kill the soldier
 
-			var ammoToAdd = AmmoCounts.Choice(_rand);
+			var ammoToAdd = zombie.AmmoCounts.Choice(_rand);
 			_ammo.AddAmmo(ammoToAdd);
+			_machinegun.AddWaterTemperature(-zombie.HeatRemoval);
 		}
 
 	}

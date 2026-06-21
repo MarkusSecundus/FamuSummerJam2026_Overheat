@@ -22,6 +22,8 @@ public class MachinegunController : MonoBehaviour
     [SerializeField] float WaterTemperatureIncreasePerShot = 0.03f;
     [SerializeField] float WaterTemperatureDecreasePerSecond = 0.1f;
     [SerializeField] float CurrentWaterTemeperature = 0f;
+    [SerializeField] float WaterTooHotThreshold = 0.9f;
+    bool IsWaterTooHot => CurrentWaterTemeperature >= WaterTooHotThreshold;
     [SerializeField] Interval<Vector2> _shootArea;
 
     void Start()
@@ -90,11 +92,14 @@ public class MachinegunController : MonoBehaviour
     [SerializeField] float _knockbackIn_seconds = 0.08f;
     [SerializeField] float _knockbackOut_seconds = 0.1f;
     void DoShoot(in RaycastHit hitInfo)
-    {
-        if (CurrentAmmoCount <= 0) return;
-        if (!_shootTimestamp.TryConsume(_timeBetweenShots_seconds)) return;
-        
-        GetComponentInChildren<VisualEffectsHelper>().EmitParticles(_shootParticlesCount);
+	{
+		if (CurrentAmmoCount <= 0) return;
+		if (IsWaterTooHot) return;
+
+		if (!_shootTimestamp.TryConsume(_timeBetweenShots_seconds)) return;
+
+
+		GetComponentInChildren<VisualEffectsHelper>().EmitParticles(_shootParticlesCount);
 
         var particlePoint = hitInfo.point + hitInfo.normal * ShotParticles.DistanceAlongNormal;
 		ShotParticles.Particles.Emit(new ParticleSystem.EmitParams { position = particlePoint }, ShotParticles.Count);
@@ -109,11 +114,16 @@ public class MachinegunController : MonoBehaviour
         var knockback_child = Rotatable.transform.GetChild(0);
         knockback_child.DOLocalMove(_knockbackIntensity, _knockbackIn_seconds).OnComplete(() => knockback_child.DOLocalMove(Vector3.zero, _knockbackOut_seconds));
 
-        CurrentWaterTemeperature = (CurrentWaterTemeperature + WaterTemperatureIncreasePerShot).Clamp01();
+		AddWaterTemperature(WaterTemperatureIncreasePerShot);
         _ammoStatus.ConsumeAmmo(1);
 
         //Debug.Log($"{_shootTimestamp.LastTimestamp_seconds}, Shooting!", this);
     }
+    public void AddWaterTemperature(float increase)
+	{
+		CurrentWaterTemeperature = (CurrentWaterTemeperature + increase).Clamp01();
+	}
+
     [System.Serializable] struct CursorConfig
 	{
 		[SerializeField] public Texture2D Normal;
