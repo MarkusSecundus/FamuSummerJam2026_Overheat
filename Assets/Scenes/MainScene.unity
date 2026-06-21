@@ -2239,6 +2239,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 615170274297966976, guid: 4448704e6567e894e8783f4662bd766a, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 704874444499276000, guid: 4448704e6567e894e8783f4662bd766a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1018705942470504833, guid: 4448704e6567e894e8783f4662bd766a, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1053714612585212390, guid: 4448704e6567e894e8783f4662bd766a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.371
@@ -2279,6 +2291,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1064916684457276453, guid: 4448704e6567e894e8783f4662bd766a, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1489530160799536344, guid: 4448704e6567e894e8783f4662bd766a, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1650585758033950902, guid: 4448704e6567e894e8783f4662bd766a, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1906522335510430832, guid: 4448704e6567e894e8783f4662bd766a, type: 3}
       propertyPath: m_Name
       value: GunScene
@@ -2287,10 +2311,58 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 163601437}
+    - target: {fileID: 3082180933707728008, guid: 4448704e6567e894e8783f4662bd766a, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3771775421975181818, guid: 4448704e6567e894e8783f4662bd766a, type: 3}
       propertyPath: OnDamaged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 239992756}
+    - target: {fileID: 3907032847908857644, guid: 4448704e6567e894e8783f4662bd766a, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3979870851362189362, guid: 4448704e6567e894e8783f4662bd766a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 4455334773583039795, guid: 4448704e6567e894e8783f4662bd766a, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7166618489591842592, guid: 4448704e6567e894e8783f4662bd766a, type: 3}
+      propertyPath: m_Size.x
+      value: 16.725365
+      objectReference: {fileID: 0}
+    - target: {fileID: 7166618489591842592, guid: 4448704e6567e894e8783f4662bd766a, type: 3}
+      propertyPath: m_Size.y
+      value: 34.620003
+      objectReference: {fileID: 0}
+    - target: {fileID: 7166618489591842592, guid: 4448704e6567e894e8783f4662bd766a, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1636401841, guid: c38768173d024db4196618098dac6608, type: 3}
+    - target: {fileID: 7166618489591842592, guid: 4448704e6567e894e8783f4662bd766a, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7598628578895030264, guid: 4448704e6567e894e8783f4662bd766a, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7965760994178944129, guid: 4448704e6567e894e8783f4662bd766a, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8846504996319318981, guid: 4448704e6567e894e8783f4662bd766a, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8969853203172415470, guid: 4448704e6567e894e8783f4662bd766a, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

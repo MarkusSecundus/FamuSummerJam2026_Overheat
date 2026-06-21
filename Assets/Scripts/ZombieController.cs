@@ -3,11 +3,9 @@ using MarkusSecundus.Utils.Behaviors.Automatization;
 using MarkusSecundus.Utils.Behaviors.Cosmetics;
 using MarkusSecundus.Utils.Primitives;
 using MarkusSecundus.Utils.Randomness;
-using NUnit.Framework;
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ZombieController : MonoBehaviour, IRandomizer
 {
@@ -22,6 +20,11 @@ public class ZombieController : MonoBehaviour, IRandomizer
 	public List<int> AmmoCounts;
 	public float HeatRemoval = 0f;
 	public bool IsDead => HP <= 0;
+
+
+	[SerializeField] UnityEvent OnHurt;
+	[SerializeField] UnityEvent OnDie;
+	[SerializeField] UnityEvent OnSuccess;
 	public void Start()
 	{
 		DoWalkingAnimation(false);
@@ -65,6 +68,7 @@ public class ZombieController : MonoBehaviour, IRandomizer
 		if (IsDead)
 		{
 			DamagedEffect.Blink();
+			OnDie.Invoke();
 			transform.DOScale(0f, Animation.DeathScaleDuration_seconds).OnComplete(() =>
 			{
 				Destroy(this.gameObject);
@@ -72,8 +76,18 @@ public class ZombieController : MonoBehaviour, IRandomizer
 		}
 		else
 		{
+			OnHurt?.Invoke();
 			DamagedEffect.Blink();
 		}
+	}
+
+	public void MissionSuccess()
+	{
+		OnSuccess?.Invoke();
+		transform.DOScale(0f, Animation.DeathScaleDuration_seconds).OnComplete(() =>
+		{
+			Destroy(this.gameObject);
+		});
 	}
 
 	public void Randomize(System.Random random)
