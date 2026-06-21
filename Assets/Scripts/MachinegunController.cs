@@ -1,3 +1,4 @@
+using DG.Tweening;
 using MarkusSecundus.Utils.Behaviors.Cosmetics;
 using MarkusSecundus.Utils.Behaviors.GUI;
 using MarkusSecundus.Utils.Extensions;
@@ -13,11 +14,11 @@ using UnityEngine.UI;
 public class MachinegunController : MonoBehaviour
 {
     [SerializeField] Transform Rotatable;
-    [SerializeField] TMProFormatter ammoCountLabel;
     [SerializeField] WaterTankControl waterBoilingProgressBar;
 
+    AmmoStatus _ammoStatus;
     //[SerializeField] int MaxAmmoCount = 100;
-    [SerializeField] int CurrentAmmoCount = 50;
+    int CurrentAmmoCount => _ammoStatus.AmmoCount;
     [SerializeField] float WaterTemperatureIncreasePerShot = 0.03f;
     [SerializeField] float WaterTemperatureDecreasePerSecond = 0.1f;
     [SerializeField] float CurrentWaterTemeperature = 0f;
@@ -25,7 +26,7 @@ public class MachinegunController : MonoBehaviour
 
     void Start()
     {
-        UpdateAmmoCountUI();
+        _ammoStatus = FindAnyObjectByType<AmmoStatus>();
         UpdateWaterTemepratureUI();
 	}
 
@@ -84,6 +85,10 @@ public class MachinegunController : MonoBehaviour
     [SerializeField] float _timeBetweenShots_seconds = 0.4f;
     [SerializeField] int _shootParticlesCount = 5;
     EventTimestamp _shootTimestamp = EventTimestamp.Make();
+
+    [SerializeField] Vector3 _knockbackIntensity = Vector3.zero;
+    [SerializeField] float _knockbackIn_seconds = 0.08f;
+    [SerializeField] float _knockbackOut_seconds = 0.1f;
     void DoShoot(in RaycastHit hitInfo)
     {
         if (CurrentAmmoCount <= 0) return;
@@ -101,10 +106,11 @@ public class MachinegunController : MonoBehaviour
         {
             zombie.DoDamage(1);
         }
+        var knockback_child = Rotatable.transform.GetChild(0);
+        knockback_child.DOLocalMove(_knockbackIntensity, _knockbackIn_seconds).OnComplete(() => knockback_child.DOLocalMove(Vector3.zero, _knockbackOut_seconds));
 
         CurrentWaterTemeperature = (CurrentWaterTemeperature + WaterTemperatureIncreasePerShot).Clamp01();
-        --CurrentAmmoCount;
-        UpdateAmmoCountUI();
+        _ammoStatus.ConsumeAmmo(1);
 
         //Debug.Log($"{_shootTimestamp.LastTimestamp_seconds}, Shooting!", this);
     }
@@ -127,8 +133,4 @@ public class MachinegunController : MonoBehaviour
 		waterBoilingProgressBar.SetValue(Mathf.Lerp(waterBoilingProgressBar.Value, CurrentWaterTemeperature, Time.deltaTime));
 	}
 
-    void UpdateAmmoCountUI()
-    {
-        this.ammoCountLabel.SetText(CurrentAmmoCount);
-    }
 }

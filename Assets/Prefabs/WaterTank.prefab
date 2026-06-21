@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2318771643774131069}
   m_Layer: 0
-  m_Name: WaterLevel
+  m_Name: Thermometer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25,8 +25,8 @@ Transform:
   m_GameObject: {fileID: 415673650512696497}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 0.1, z: 1}
+  m_LocalPosition: {x: 0.231, y: 0.1823, z: 0.026}
+  m_LocalScale: {x: 1, y: 0.04, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6855956381584442539}
@@ -81,9 +81,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WaterTankController
   YScaleInterval:
-    Min: 0.15
-    Max: 0.9
+    Min: 0.04
+    Max: 1
   WaterVisualizer: {fileID: 2318771643774131069}
+  BubbleParticles: {fileID: 2726179215301301240}
+  BubbleCount:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 1.2751132
+      outSlope: 1.2751132
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.04265403
+    - serializedVersion: 3
+      time: 0.97752726
+      value: 24.82701
+      inSlope: 84.83186
+      outSlope: 84.83186
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.024192592
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &6073389992932075242
 GameObject:
   m_ObjectHideFlags: 0
@@ -186,7 +211,7 @@ GameObject:
   - component: {fileID: 8894769369522317841}
   - component: {fileID: 15562437677423045}
   m_Layer: 0
-  m_Name: Glass (1)
+  m_Name: Hydrargurum
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -200,13 +225,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7901333921062966607}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.30196157, z: -0, w: 0.9533201}
-  m_LocalPosition: {x: 0, y: 0.411, z: 0}
-  m_LocalScale: {x: 0.49684048, y: 0.3657677, z: 0.49684048}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.0319, y: 0.232, z: -0.0046}
+  m_LocalScale: {x: 0.038257804, y: 0.46, z: 0.03419586}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2318771643774131069}
-  m_LocalEulerAnglesHint: {x: 0, y: -35.151, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8894769369522317841
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -214,7 +239,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7901333921062966607}
-  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: -5495902117074765545, guid: f6cf574878a786d4895628095e30b5e5, type: 3}
 --- !u!23 &15562437677423045
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -240,7 +265,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1baff54bd6ae4a5429b6aba414d96aab, type: 2}
+  - {fileID: 2100000, guid: 998a188c61fd9024dbf045cf9348e790, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -291,7 +316,7 @@ Transform:
   m_GameObject: {fileID: 9173184068860942033}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.053, y: 0, z: 0.124}
+  m_LocalPosition: {x: 0.075, y: -0, z: 0.038}
   m_LocalScale: {x: 0.049999997, y: 0.05, z: 0.049999997}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -380,7 +405,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 5
+      scalar: 1.97
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -433,7 +458,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 5
+      scalar: 7.54
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -936,7 +961,7 @@ ParticleSystem:
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
     m_Rotation: {x: 0, y: 0, z: 0}
-    m_Scale: {x: 1, y: 1, z: 1}
+    m_Scale: {x: 1, y: 0.78, z: 2.11}
     placementMode: 0
     m_MeshMaterialIndex: 0
     m_MeshNormalOffset: 0
@@ -1134,7 +1159,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1.98
+      scalar: 50
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -1240,7 +1265,7 @@ ParticleSystem:
     m_BurstCount: 0
     m_Bursts: []
   SizeModule:
-    enabled: 0
+    enabled: 1
     curve:
       serializedVersion: 2
       minMaxState: 1
@@ -1250,22 +1275,31 @@ ParticleSystem:
         serializedVersion: 2
         m_Curve:
         - serializedVersion: 3
-          time: 0
+          time: 0.0022697449
           value: 0
-          inSlope: 0
-          outSlope: 1
+          inSlope: 3.2146072
+          outSlope: 3.2146072
           tangentMode: 0
           weightedMode: 0
           inWeight: 0.33333334
+          outWeight: 0.12335727
+        - serializedVersion: 3
+          time: 0.4918284
+          value: 0.5303123
+          inSlope: 1.5105695
+          outSlope: 1.5105695
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0.26775077
           outWeight: 0.33333334
         - serializedVersion: 3
-          time: 1
+          time: 0.99546236
           value: 1
-          inSlope: 1
-          outSlope: 0
+          inSlope: 0.83857435
+          outSlope: 0.83857435
           tangentMode: 0
           weightedMode: 0
-          inWeight: 0.33333334
+          inWeight: 0.11741358
           outWeight: 0.33333334
         m_PreInfinity: 2
         m_PostInfinity: 2
